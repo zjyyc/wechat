@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="container">
+
+    <view wx:for="{{list}}">
+        
+		<video wx:if='{{item.type==3}}' class='top-video' src="{{item.value}}" loop='true' autoplay='true' controls style='height : {{item.height}}rpx;'></video>
+		<view wx:if='{{item.type==1}}' class='text'>
+			{{item.value}}
+		</view>
+		<image wx:if='{{item.type==2}}' class='image' src='{{item.value}}' mode='widthFix'></image>
+    </view>
+</view>

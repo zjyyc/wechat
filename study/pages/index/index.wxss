@@ -1,0 +1,25 @@
+/**index.wxss**/
+
+
+.top-video {
+	width: 750rpx;
+	height: 480rpx;
+	display: block;
+	margin-bottom:20rpx;
+}
+
+.text{
+	font-size: 28rpx;
+	text-indent: 56rpx;
+	margin-bottom:20rpx;
+	line-height: 1.5;
+	padding-left: 24rpx;
+	padding-right:24rpx;
+}
+.image{
+	width: 750rpx;
+	display: block;
+	margin-bottom:20rpx;
+}
+
+

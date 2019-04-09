@@ -1,0 +1,62 @@
+/**index.wxss**/
+.container{
+	padding-top:80rpx;
+	width:750rpx;
+	overflow-x: hidden;
+}
+.hd{
+	position: fixed;
+	width:750rpx;
+	height: 80rpx;
+	background: #fff;
+	left: 0;
+	top:0;
+}
+.panel{
+	margin-bottom:30rpx;
+	width: 760rpx;
+}
+.hd-title{
+	padding-left:24rpx;
+	font-size:32rpx;
+	margin-bottom:24rpx;
+}
+.item{
+	width:370rpx;
+	margin-right:10rpx;
+	float:left;
+	padding-bottom:36rpx;
+}
+.item-0{
+	width:750rpx;
+}
+.item .image{
+	display: block;
+	width: 370rpx;
+}
+
+.item-0 .image{
+	display: block;
+	width: 750rpx;
+}
+.item .title{
+	padding:24rpx 24rpx 0 24rpx;
+	font-size: 32rpx;
+	line-height: 1.5;
+	color:#333;
+	height: 48rpx;
+	overflow: hidden;
+}
+.item .des{
+	padding: 8rpx 24rpx;
+	font-size: 24rpx;
+	color:#666;
+	line-height: 1.5;
+	height: 36rpx;
+	overflow: hidden;
+}
+
+.clear{
+	float:none;
+	clear:both;
+}
