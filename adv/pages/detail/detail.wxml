@@ -1,28 +1,35 @@
 <!--index.wxml-->
 <view class="container">
+    <view class='back' bindtap='back' wx:if='{{from=="index"}}'>
+        <image src='http://x.eat163.com/54702360568.png' />
+    </view>
+    
     <view wx:for="{{list}}" wx:key='{{index}}'>
         <view wx:if='{{item.type==1}}' class='text'>
             {{item.value}}
         </view>
-        <image wx:if='{{item.type==2}}' class='image' src='{{item.value}}' mode='widthFix'></image>
-		<video wx:if='{{item.type==3}}' class='top-video' src="{{item.value}}" loop='true' autoplay='true' controls='{{false}}' style='height : {{item.height}}rpx;'></video>
+        <image wx:if='{{item.type==2}}' lazy-load='true' class='image' src='{{item.pic}}' mode='widthFix'></image>
+        <video wx:if='{{item.type==3}}' show-fullscreen-btn='{{false}}' autoplay='{{index == 0 ? true : false}}' id='{{"video-" + index}}' class='video' src="{{item.value}}" loop='true' show-mute-btn='true' muted='{{index==0 ? false : true}}' style='height : {{item.extra}}rpx;'></video>
         <view wx:if='{{item.type == 4}}' class='form'>
-			<block wx:if='{{!item.status || item.status == 0}}'>
-				<input bindinput="input" type='{{item=="电话号码" ? "number" : "text"}}' data-name='{{item}}' wx:for='{{info.fields}}' placeholder='{{item}}' wx:key='{{index}}' value='{{info.formData[item]}}' />
-				<view class='button' data-index='{{index}}' bindtap='save' style='background-color:{{info.btnBg}}'>{{info.btnText || '预约参观'}}</view>
-			</block>
-			<block wx:if='{{item.status}}'>
-				<view class='title'>您的资料已成功提交！</view>
-				<view class='des'>工作人员会忙尽快与您取得联系</view>
-				<view class='info-list'>
-					<view class='info' wx:for='{{info.formData}}' wx:for-index="key"  wx:for-item="value">
-						{{key}} : {{value}}
-					</view>
-				</view>
-				<view class='button' data-index='{{index}}' bindtap='write' style='background-color:{{info.btnBg}}'>重新填写</view>
-			</block>
-		</view>
-		<view wx:if='{{item.type==5}}' bindtap='ringUp'  class='button' data-tel='{{item.value}}' style='background-color:{{tel.btnBg}}'>{{tel.btnText || '一键拔号'}}</view>
-
-    </view>
+            <block wx:if='{{!item.status || item.status == 0}}'>
+                <input bindinput="input" type='{{item=="电话号码" ? "number" : "text"}}' data-name='{{item}}' wx:for='{{info.fields}}' placeholder='{{item}}' wx:key='{{index}}' value='{{info.formData[item]}}' />
+                <view class='button' data-index='{{index}}' bindtap='save' style='background-color:{{info.btnBg}}'>{{info.btnText || '预约参观'}}</view>
+            </block>
+            <block wx:if='{{item.status}}'>
+                <view class='title'>您的资料已成功提交！</view>
+                <view class='des'>工作人员会忙尽快与您取得联系</view>
+                <view class='info-list'>
+                    <view class='info' wx:for='{{info.formData}}' wx:for-index="key" wx:for-item="value">
+                        {{key}} : {{value}}
+                    </view>
+                </view>
+                <view class='button' data-index='{{index}}' bindtap='write' style='background-color:{{info.btnBg}}'>重新填写</view>
+            </block>
+        </view>
+        <view wx:if='{{item.type==5}}' bindtap='ringUp' class='button' data-tel='{{item.value}}' style='background-color:{{tel.btnBg}}'>{{tel.btnText || '一键拔号'}}</view>
+		<map wx:if='{{item.type == 6}}' longitude="{{item.longitude}}" latitude="{{item.latitude}}" 
+		scale="16" markers="{{item.markers}}" data-item='{{item}}'
+		bindmarkertap="markertap" bindcallouttap='markertap'  >
+		</map>
+	</view>
 </view>

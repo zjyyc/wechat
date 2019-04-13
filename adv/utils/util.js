@@ -26,6 +26,9 @@ var getPic = function(src , width , height){
 	}
 }
 
+
+
+
 module.exports = {
     formatTime: formatTime,
 	getPic : getPic

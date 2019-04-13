@@ -1,15 +1,33 @@
 // pages/detail/detail.js
+const util = require('../../utils/util.js');
 Page({
-
 	/**
 	 * 页面的初始数据
 	 */
 	id : 0 ,
+	title : '',
+	from : '',
 	data: {
+		markers : [{
+			id : 0 ,
+			latitude: '30.3048880000',
+			longitude: '120.3521790000',
+			title : '浙江育英职业技术学院',
+			alpha : 0.8 ,
+			callout : {
+				content: '浙江育英职业技术学院',
+				display: 'ALWAYS',
+				padding:10 ,
+				fontSize : 18 ,
+				color: '#ffffff' , 
+				bgColor : '#333333' ,
+				borderRadius : 15,
+				alpha : 0.8
+			}
+		}]
 	},
-	formData : {
-
-	},
+	videoList : [],
+	flag : false,
 	getData(){
 		wx.showToast({
 			icon: 'loading',
@@ -18,9 +36,9 @@ Page({
 		var self = this;
 		wx.request({
 			url: 'https://www.eat163.com/maria/get-data.json',
-			data: { id: 20 },
+			data: {id: 20},
 			success(res) {
-				var list = [] , info = {}  , tel = {};
+				var list = [] , info = {}  , tel = {} ;
 				console.log(res.data);
 				res.data.map(function (group) {
 					group.list.map(function (item) {
@@ -28,27 +46,83 @@ Page({
 							list = item.detail;
 							info = item.info;
 							tel  = item.tel;
+							self.title = item.des;
 						}
-					})
+					});
 				});
 				if(list.length == 0){
 					list.push({
 						type : 1,
 						value : '请在后台设置文本'
-					})
+					});
 				}
+				list.map(function(item , index){
+					if(item.type == 2){
+						item.pic = self.getFullPic(item.value);
+					}
+					if(item.type == 3){
+						self.videoList.push({
+							index : index
+						});
+					}
+					if(item.type == 6){
+						item.latitude = parseFloat(item.value.split(',')[0]);
+						item.longitude = parseFloat(item.value.split(',')[1]);
+						item.markers = [{
+							id: 0,
+							latitude: item.latitude,
+							longitude: item.longitude,
+							title: item.extra,
+							alpha: 0.8,
+							callout: {
+								content: item.extra,
+								display: 'ALWAYS',
+								padding: 10,
+								fontSize: 18,
+								color: '#ffffff',
+								bgColor: '#333333',
+								borderRadius: 15,
+								alpha: 0.8
+							}
+						}];
+					}
+				});
+				console.log(self.videoList);
 				info.formData = {};
 				info.fields = ['电话号码'].concat(info.fields);
 				self.setData({
 					list: list,
 					info : info,
-					tel : tel
+					tel : tel,
+					from : self.from
 				});
 				wx.hideToast();
 				wx.stopPullDownRefresh();
+				setTimeout(function(){
+					self.videoList.map(function(item){
+						var query = wx.createSelectorQuery();
+						var dom = query.select('#video-' + item.index);
+						dom.boundingClientRect(function (res) {
+							item.position = res;
+						}).exec();
+						dom.context(function (res) {
+							item.context = res.context;
+						}).exec();
+					});
+				} , 2000);
 			}
 		});
 	},
+	markertap(event){
+		var item = event.currentTarget.dataset.item;
+		console.log(item);
+		wx.openLocation({
+			latitude: item.latitude,
+			longitude: item.longitude,
+			scale: 13
+		})
+	},
+
 	input(event){
 		this.data.info.formData[event.currentTarget.dataset.name] = event.detail.value;
 	},
@@ -81,7 +155,7 @@ Page({
 				f1: this.id,
 				f2 : formData['电话号码'],
 				site : 1 ,
-				data : JSON.stringify(this.formData)
+				data : JSON.stringify(formData)
 			},
 			success(res){
 				console.log(res);
@@ -117,7 +191,8 @@ Page({
 	 */
 	onLoad: function (options) {
 		this.id = options.id;
-		this.id = 1554261145849313;
+		this.from = options.from || '';
+		// this.id = 1554697489980196;
 		this.getData();	
 	},
 
@@ -125,28 +200,40 @@ Page({
 	 * 生命周期函数--监听页面初次渲染完成
 	 */
 	onReady: function () {
-
+	
+		
 	},
 
+	back:function(){
+		wx.navigateBack();
+	},
 	/**
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		for(var i=0;i<this.videoList.length;i++){
+			var item = this.videoList[i];
+			if (item.index > 0 && item.context){
+				item.context.pause();
+			}
+		}
 	},
 
-	/**
-	 * 生命周期函数--监听页面隐藏
-	 */
-	onHide: function () {
-
+	onHide() {
+		for (var i = 0; i < this.videoList.length; i++) {
+			var item = this.videoList[i];
+			if (item.context) {
+				item.context.pause();
+			}
+		}
 	},
-
-	/**
-	 * 生命周期函数--监听页面卸载
-	 */
-	onUnload: function () {
-
+	onUnload() {
+		for (var i = 0; i < this.videoList.length; i++) {
+			var item = this.videoList[i];
+			if (item.context) {
+				item.context.pause();
+			}
+		}
 	},
 
 	/**
@@ -160,18 +247,65 @@ Page({
 	 * 页面上拉触底事件的处理函数
 	 */
 	onReachBottom: function () {
-
 	},
-
 	/**
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
 		var json = {
-			title: '弹出分享时显示的分享标题',
-			desc: '弹出分享时显示的分享标题',
-			path : '/pages/detail/detail'
+			title: this.title,
+			desc: this.title,
+			path : '/pages/detail/detail?id=' + this.id
 		}
 		return json;
+	},
+	onPageScroll : function(event){
+		var top = event.scrollTop;
+		var height = wx.getSystemInfoSync().windowHeight;
+		var list = this.videoList;
+		
+		for(var i=0; i < this.videoList.length; i++){
+			var item = this.videoList[i];
+			if(top < item.position.bottom - 50 && top + height/1.5 > item.position.top){
+				this.play(i);
+				console.log('play' , item);
+				return;
+			}
+			if(top > item.position.bottom-50 || top + height < item.position.top ){
+				item.status = 'pause';
+				console.log('pause' , item);
+				item.context.pause();
+			}
+		}
+	},
+	play(index){
+		for (var i = 0; i < this.videoList.length; i++) {
+			var item = this.videoList[i];
+			if(i != index){
+				if(item.status == 'pause'){
+					continue;
+				}
+				item.context.pause();
+				item.status = 'pause';
+			}
+			else{
+				if(item.status == 'play'){
+					continue;
+				}
+				item.status = 'play';
+				item.context.play();
+			}
+		}
+	},
+	getFullPic(src) {
+		if (src.indexOf('http://x.eat163.com') == -1) {
+			return src;
+		}
+		else {
+			if (src.indexOf('?') > -1) {
+				src = src.split('?')[0];
+			}
+			return src += '?x-oss-process=image/resize,w_750';
+		}
 	}
 })

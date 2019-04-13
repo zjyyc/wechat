@@ -1,26 +1,33 @@
 /**index.wxss**/
-.top-video {
+.back{
+	position: fixed;
+	left:36rpx;
+	top:56rpx;
+	z-index:1000;
+	width:60rpx;
+	height: 49rpx;
+}
+.back image{
+	width : 40rpx;
+	height:  40rpx;
+	display: block;
+}
+.video {
     width: 750rpx;
     height: 480rpx;
     display: block;
-    margin-bottom:20rpx;
 }
 .text{
     font-size: 28rpx;
     text-indent: 56rpx;
-    margin-bottom:20rpx;
+    margin:24rpx;
     line-height: 1.5;
-    padding-left: 24rpx;
-    padding-right:24rpx;
 }
 .image{
     width: 750rpx;
     display: block;
-    margin-bottom:20rpx;
 }
-.container{
-	padding-bottom:100rpx;
-}
+
 .button{
 	margin: 0 auto 20rpx;
 	width:640rpx;
@@ -66,4 +73,7 @@
 	line-height: 1.5;
 	color:#333;
 }
-
+map{
+	width: 750rpx;
+	height: 750rpx;
+}

@@ -12,7 +12,7 @@ Page({
 		var id = event.currentTarget.dataset.id;
 		console.log(id);
         wx.navigateTo({
-            url: '/pages/detail/detail?id=' + id
+            url: '/pages/detail/detail?from=index&id=' + id
         })
     },
 	getData(){
@@ -48,5 +48,13 @@ Page({
     },
 	onPullDownRefresh() {
 		this.getData();
-	}  
+	},
+	onShareAppMessage: function () {
+		var json = {
+			title: '奥肯设计',
+			desc: '奥肯设计',
+			path: '/pages/index/index'
+		}
+		return json;
+	},
 })
