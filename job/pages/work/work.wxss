@@ -1,0 +1,258 @@
+.page{
+	padding-top:131rpx;
+}
+.hd{
+	position: fixed;
+	padding-top:50rpx;
+	height: 80rpx;
+	background-color: rgba(255 , 255 , 255 ,0.96);
+	
+	left:0;
+	top:0;
+	width:750rpx;
+	z-index:1000;
+}
+.hd .back{
+	position: absolute;
+	width:65rpx;
+	height: 65rpx;
+	left:20rpx;
+	z-index:1001;
+	text-align: left;
+	line-height: 65rpx;
+	padding-left: 15rpx;
+	top:45rpx;
+}
+.hd .back:before{
+	font-family: 'iconfont';
+	content : '\e610';
+	color:#333;
+	font-size: 45rpx;
+}
+.hd .title{
+	width:360rpx;
+	position: absolute;
+	left:195rpx;
+	text-align: center;
+	font-size:36rpx;
+	line-height: 40rpx;
+	top:55rpx;
+	height: 40rpx;
+	overflow: hidden;
+	color:#333;
+}
+.work {
+	background: #fff;
+	margin-top:20rpx;
+	width: 700rpx;
+	height: 320rpx;
+	margin-left:25rpx;
+	box-shadow: 0px 0px 6rpx darkgrey;
+	box-sizing: border-box;
+	padding:40rpx 30rpx;
+}
+.work .title{
+	font-size: 36rpx;
+	font-weight: bold;
+	color:#333;
+}
+.work .salary{
+	font-size: 28rpx;
+	color:#f30;
+	margin-top:24rpx;
+	margin-bottom:32rpx;
+}
+.location{
+	border-top:solid 1rpx #eee;
+	padding:32rpx 40rpx 32rpx 0;
+	color:#666;
+	position: relative;
+}
+.location .icon{
+	position: absolute;
+	left: 0;
+	top: 32rpx;
+}
+.location .icon:before{
+	font-family: 'iconfont';
+	content : '\e634';
+	color:#06f;
+	font-size:32rpx;
+}
+.icon-right{
+	position: absolute;
+	right: 0;
+	top: 45rpx;
+}
+.icon-right:before{
+	font-family: 'iconfont';
+	content : '\e602';
+	font-size:50rpx;
+	color:#999;
+}
+.location .title{
+	color:#333;
+	font-size:32rpx;
+	height: 32rpx;
+	line-height: 1;
+	padding-left:40rpx;
+}
+.location .sub-title{
+	color:#888;
+	font-size:24rpx;
+	height: 24rpx;
+	line-height: 1;
+	overflow: hidden;
+	margin-top: 24rpx;
+}
+
+.box{
+	margin-top:20rpx;
+	padding:40rpx;
+}
+.box-hd .title{
+	font-size:32rpx;
+	color:#333;
+	position: relative;
+	z-index:1;
+	background: #fff;
+	width: 220rpx;
+	line-height: 36rpx;
+	font-weight: bold;
+}
+.box-hd .title:before{
+	font-family: 'iconfont';
+	content : '\e62d';
+	font-size:32rpx;
+	color:#1787fb;
+	margin-right: 10rpx;
+}
+.clear{
+	float: none;
+	clear:both;
+}
+.box-hd{
+	position: relative;
+
+}
+.box-hd .line{
+	border-top:solid 1px #eee;
+	position: absolute;
+	top:18rpx;
+	left: 0 ;
+	right:0rpx;
+}
+.box-bd{
+	margin-top:32rpx;
+}
+.bright view{
+	background-color: #f5faff;
+    color: #1787fb;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    margin-right: 20rpx;
+    padding: 14rpx 20rpx;
+	float: left;
+	margin-top: 20rpx;
+}
+
+.box-bd.desc view{
+	font-size:26rpx;
+	line-height: 1.5;
+	margin:16rpx 0;
+	color:#333;
+}
+
+.company{
+	position: relative;
+	height: 200rpx;
+	padding-left:150rpx;
+	margin-bottom:20rpx;
+	background:#fff;
+	box-sizing: border-box;
+	overflow: hidden;
+	margin-top:36rpx;
+}
+.company .avatar{
+	width:120rpx;
+	height: 120rpx;
+	position: absolute;
+	left : 0;
+	top: 0;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.company .title{
+	font-size: 32rpx;
+	color:#333;
+}
+.company .sub-title{
+	font-size: 24rpx;
+	color:#888;
+	max-height: 64rpx;
+	line-height: 32rpx;
+	overflow: hidden;
+	margin-top:24rpx;
+}
+.company .desc{
+	font-size: 24rpx;
+	color:#888;
+	line-height: 24rpx;
+	height: 28rpx;
+	overflow: hidden;
+	margin-top:12rpx;
+}
+.company .desc view{
+	display: inline;
+	margin:6rpx;
+	color:#06f;
+	font-weight: 500;
+}
+.panel{
+	background:#efefef;
+}
+.panel .panel-hd{
+	height: 100rpx;
+	position: relative;
+}
+.panel-hd .line{
+	border-top:solid 1px #ccc;
+	width:300rpx;
+	position: absolute;
+	top:50rpx;
+	left:225rpx;
+}
+.panel-hd .title{
+	background: #efefef;
+	position: absolute;
+	font-size: 30rpx;
+	color:#999;
+	line-height: 1;
+	text-align: center;
+	width:200rpx;
+	top:35rpx;
+	left:275rpx;
+}
+.panel-bd .item{
+	background: #fff;
+	margin-bottom:20rpx;
+	position: relative;
+	padding:40rpx 40rpx 32rpx;
+}
+.panel-bd .item .title{
+	font-size: 36rpx;
+	color:#333;
+	font-weight: bold;
+
+}
+.panel-bd .item .salary{
+	font-size: 28rpx;
+	color:#f30;
+	margin-top:24rpx;
+}
+.panel-bd .item .icon-right{
+	top : 55rpx;
+}
+
+

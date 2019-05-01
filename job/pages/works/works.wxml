@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+	<view class='hd'>
+		<view bindtap='tap'>
+			推荐职位
+		</view>
+	</view>
+	<view class='bd'>
+		<block wx:for='{{list}}' wx:for-item='company' wx:key='{{index}}'>
+			<view class='item' wx:for='{{company.jobs}}' wx:key='{{index}}' bindtap='go' 
+			data-company-id='{{company.id}}' data-job-id='{{item.id}}'>
+				<view class='title'>{{item.title}}</view>
+				<view class='salary'>{{item.salary}}</view>
+				<view class='city'>{{company.address.city}} | {{company.address.area}}</view>
+				<view class='tags'>
+					<view wx:for='{{item.tags}}' wx:for-item='tag' wx:key='{{index}}'>{{tag}}</view>
+				</view>
+				<view class='company'>{{company.name}}</view>
+			</view>
+		</block>
+	</view>
+</view>

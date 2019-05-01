@@ -1,0 +1,93 @@
+/**index.wxss**/
+
+
+.hd{
+	padding-top:50rpx;
+	background:rgb(251 , 251 , 251 , 0.96);
+	position: fixed;
+	text-align: center;
+	left:0;
+	top:0;
+	width:750rpx;
+	height: 80rpx;
+	font-size:32rpx;
+	z-index:1000;
+	border-bottom: solid 1px rgb(238 , 238 , 238);
+}
+.hd view{
+	display: inline-block;
+	padding:6rpx 30rpx 12rpx;
+}
+.hd view:after{
+	font-family: 'iconfont';
+	content: '\e662';
+	color:#666;
+	font-size:24rpx;
+}
+
+
+.container{
+	overflow: hidden;
+	width:750rpx;
+	background: #efefef;
+}
+.bd{
+	margin-top:131rpx;
+}
+.item{
+	position: relative;
+	padding:40rpx;
+	margin-bottom:20rpx;
+	background:#fff;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.item .title{
+	font-size: 32rpx;
+	color:#333;
+	font-weight: bold;
+	height: 32rpx;
+	width:450rpx;
+	overflow: hidden;
+}
+.item .salary{
+	font-size:28rpx;
+	position: absolute;
+	right:40rpx;
+	top:42rpx;
+	color:#f30;
+	font-weight: bold;
+}
+.item .city{
+	margin-top: 40rpx;
+	font-size:24rpx;
+	color:#888;
+}
+.item .tags{
+	max-height: 56rpx;
+	overflow: hidden;
+	width:600rpx;
+}
+.item .tags view{
+	float: left;
+	color:#666;
+	background:#efefef;
+	padding:8rpx 12rpx;
+	margin-right:8rpx;
+	font-size:20rpx;
+	margin-top:20rpx;
+	height: 20rpx;
+}
+
+.item .sub-title{
+	font-size: 24rpx;
+	color:#888;
+	max-height: 64rpx;
+	line-height: 32rpx;
+	overflow: hidden;
+}
+.item .company{
+	margin-top: 20rpx;
+	font-size:24rpx;
+	color:#888;
+}

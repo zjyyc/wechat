@@ -1,0 +1,88 @@
+<view class='page'>
+	<view class='hd' style='opacity : {{opacity}}'>
+		<view class='back' bindtap='goBack'></view>
+		<view class='title'>{{company.name}}</view>
+	</view>
+	<view class='bd'>
+		<view class='info'>
+			<view class='mask'></view>
+			<view class='info-bd'>
+				<view class='back' bindtap='goBack'></view>
+				<view class='avatar' style='background-image:url({{company.pic}})'></view>
+				<view class='title'>{{company.name}}</view>
+				<view class='sub-title'>{{company.subTitle}}</view>
+				<view class='desc'>{{company.address.city}} | 在招职位<view>{{company.jobs.length}}</view>个</view>
+			</view>
+		</view>
+		<view class='box'>
+			<view class='box-hd'>
+				<view class='title'>公司简介</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd desc'>
+				<view wx:for='{{company.detail}}' wx:key='{{index}}'>
+					{{item}}
+				</view>
+			</view>
+		</view>
+		<view class='box'>
+			<view class='box-hd'>
+				<view class='title'>工商信息</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd businese'>
+				<view class='item'>
+					<view class='label'>公司注册名</view>
+					<view class='value'>{{company.business.name || company.name}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>成立时间</view>
+					<view class='value'>{{company.business.gmtTime}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>注册资本</view>
+					<view class='value'>{{company.business.capital}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>法人代表</view>
+					<view class='value'>{{company.business.legal}}</view>
+				</view>
+			</view>
+		</view>
+		<view class='box'>
+			<view class='box-hd'>
+				<view class='title'>公司地址</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd location' bindtap='openMap' data-address='{{company.address}}'>
+				<view class='icon'></view>
+				<view class='title'>{{company.address.city}} - {{company.address.area}}</view>
+				<view class='sub-title'>{{company.address.desc}}</view>
+				<view class='icon-right'></view>	
+			</view>
+		</view>
+
+		
+		<view class='panel'>
+			<view class='panel-hd'>
+				<view class='line'></view>
+				<view class='title'>职位列表</view>
+			</view>
+			<view class='panel-bd'>
+				<view class='item' wx:for='{{company.jobs}}' wx:key='{{index}}'
+				bindtap='gotoWork' data-company-id='{{company.id}}' data-job-id='{{item.id}}'>
+					<view class='title'>{{item.title}}</view>
+					<view class='salary'>{{item.salary}}</view>
+					<view class='icon-right'></view>	
+				</view>
+			</view>
+		</view>
+
+	</view>
+</view>
+
+
+
+
+
+

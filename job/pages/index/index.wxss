@@ -1,0 +1,92 @@
+/**index.wxss**/
+
+.hd{
+	padding-top:50rpx;
+	background:rgb(251 , 251 , 251 , 0.96);
+	position: fixed;
+	text-align: center;
+	left:0;
+	top:0;
+	width:750rpx;
+	height: 80rpx;
+	font-size:32rpx;
+	z-index:1000;
+	border-bottom: solid 1px rgb(238 , 238 , 238);
+}
+.hd view{
+	display: inline-block;
+	padding:6rpx 30rpx 12rpx;
+}
+.hd view:after{
+	font-family: 'iconfont';
+	content: '\e662';
+	color:#666;
+	font-size:24rpx;
+}
+
+
+.container{
+	overflow: hidden;
+	width:750rpx;
+	background: #efefef;
+	
+}
+.bd{
+	margin-top:131rpx;
+}
+.item{
+	position: relative;
+	padding:40rpx;
+	padding-left:200rpx;
+	margin-bottom:20rpx;
+	background:#fff;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.item .avatar{
+	width:160rpx;
+	height: 160rpx;
+	position: absolute;
+	left : 20rpx;
+	top: 20rpx;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.item image{
+	width: 160rpx;
+	position: absolute;
+	left : 20rpx;
+	top: 20rpx;
+}
+.item .title{
+	font-size: 32rpx;
+	color:#333;
+	font-weight: bold;
+	height: 32rpx;
+	overflow: hidden;
+}
+.item .bottom{
+}
+.item .sub-title{
+	font-size: 24rpx;
+	color:#888;
+	max-height: 64rpx;
+	line-height: 32rpx;
+	overflow: hidden;
+	margin-top:32rpx;
+}
+.item .desc{
+	font-size: 24rpx;
+	color:#888;
+	line-height: 24rpx;
+	height: 28rpx;
+	overflow: hidden;
+	margin-top:12rpx;
+}
+.item .desc view{
+	display: inline;
+	margin:6rpx;
+	color:#06f;
+	font-weight: 500;
+}

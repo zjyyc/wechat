@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+	<view class='hd'>
+		<view bindtap='tap'>
+			推荐公司
+		</view>
+	</view>
+	<view class='bd'>
+		<view class='item' wx:for='{{list}}' wx:key='{{index}}' bindtap='go' data-company-id='{{item.id}}'>
+			<view class='avatar' style='background-image:url({{item.avatar}})'></view>
+			<view class='title'>{{item.name}}</view>
+			<view class='bottom'>
+				<view class='sub-title'>{{item.subTitle}}</view>
+				<view class='desc'>{{item.address.city}} | 在招职位<view>{{item.jobs.length}}</view>个</view>
+			</view>
+		</view>
+	</view>
+</view>

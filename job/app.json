@@ -1,0 +1,52 @@
+{
+	"pages": [
+		"pages/company-detail/company-detail",
+		"pages/index/index",
+		
+		"pages/work/work",
+		"pages/works/works",
+		
+		
+		
+		"pages/logs/logs",
+		"pages/resume/resume",
+		"pages/me/me"
+	],
+	"window": {
+		"backgroundTextStyle": "light",
+		"navigationBarBackgroundColor": "#fff",
+		"navigationBarTitleText": "WeChat",
+		"navigationBarTextStyle": "black",
+		"navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color" : "#333",
+		"selectedColor" : "#f03" ,
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "公司",
+				"iconPath" : "images/company.png",
+				"selectedIconPath" : "images/company-selected.png"
+			},
+			{
+				"pagePath": "pages/works/works",
+				"text": "职位",
+				"iconPath": "images/work.png",
+				"selectedIconPath": "images/work-selected.png"
+			},
+			{
+				"pagePath": "pages/resume/resume",
+				"text": "公司",
+				"iconPath": "images/resume.png",
+				"selectedIconPath": "images/resume-selected.png"
+			},
+			{
+				"pagePath": "pages/me/me",
+				"text": "个人",
+				"iconPath": "images/me.png",
+				"selectedIconPath": "images/me-selected.png"
+			}
+		]
+	}
+}

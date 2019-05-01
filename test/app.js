@@ -1,6 +1,4 @@
 //app.js
-//app key : wxc75d125a82ceeae6
-//app secure : d5f5d0223725cedf80275469a4940b9d
 App({
   onLaunch: function () {
     // 展示本地存储能力
