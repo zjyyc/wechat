@@ -1,8 +1,7 @@
 /**index.wxss**/
 
 .hd{
-	padding-top:50rpx;
-	background:rgb(251 , 251 , 251 , 0.96);
+	background:rgba(251 , 251 , 251 , 0.96);
 	position: fixed;
 	text-align: center;
 	left:0;
@@ -25,15 +24,12 @@
 }
 
 
-.container{
+.page{
 	overflow: hidden;
 	width:750rpx;
 	background: #efefef;
-	
 }
-.bd{
-	margin-top:131rpx;
-}
+
 .item{
 	position: relative;
 	padding:40rpx;
@@ -65,8 +61,6 @@
 	font-weight: bold;
 	height: 32rpx;
 	overflow: hidden;
-}
-.item .bottom{
 }
 .item .sub-title{
 	font-size: 24rpx;

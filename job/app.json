@@ -1,16 +1,12 @@
 {
 	"pages": [
-		"pages/company-detail/company-detail",
-		"pages/index/index",
-		
 		"pages/work/work",
 		"pages/works/works",
-		
-		
-		
-		"pages/logs/logs",
+		"pages/me/me",
 		"pages/resume/resume",
-		"pages/me/me"
+		"pages/index/index",
+		
+		"pages/company-detail/company-detail"
 	],
 	"window": {
 		"backgroundTextStyle": "light",
@@ -37,7 +33,7 @@
 			},
 			{
 				"pagePath": "pages/resume/resume",
-				"text": "公司",
+				"text": "简历",
 				"iconPath": "images/resume.png",
 				"selectedIconPath": "images/resume-selected.png"
 			},

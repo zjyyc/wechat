@@ -6,7 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		statusBarHeight: app.globalData.statusBarHeight
 	},
 
 	/**
@@ -15,9 +15,10 @@ Page({
 	onLoad: function (options) {
 		var self = this;
 		if (!options.companyId){
-			options = { companyId: "1556343865202189", jobId: "1556362017798630" };
+			options = { companyId: "271", jobId: "275" };
 		}
-		util.getCompanyList(function(list){
+		util.getData(function(data){
+			var list = data.list;
 			var company = null; var job = null;
 			for(var i=0;i<list.length;i++){
 				if(list[i].id == options.companyId){
@@ -90,7 +91,12 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-
+		var json = {
+			title: '育英职业技术学院 - 招聘会',
+			desc: '育英职业技术学院 - 招聘会',
+			path: '/pages/works/works'
+		}
+		return json;
 	},
 	openMap(event){
 		var address = event.currentTarget.dataset.address;
@@ -134,5 +140,6 @@ Page({
 		wx.redirectTo({
 			url: '/pages/work/work?companyId=' + companyId + '&jobId=' + jobId
 		})
-	}
+	},
+	
 })

@@ -1,12 +1,12 @@
 <!--index.wxml-->
-<view class="container">
-	<view class='hd'>
-		<view bindtap='tap'>
-			推荐公司
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
+		<view bindtap='changeBelong'>
+			{{belong.title}}
 		</view>
 	</view>
 	<view class='bd'>
-		<view class='item' wx:for='{{list}}' wx:key='{{index}}' bindtap='go' data-company-id='{{item.id}}'>
+		<view class='item' wx:for='{{list}}' wx:key='{{index}}' wx:if='{{item.show}}'  bindtap='go' data-company-id='{{item.id}}'>
 			<view class='avatar' style='background-image:url({{item.avatar}})'></view>
 			<view class='title'>{{item.name}}</view>
 			<view class='bottom'>

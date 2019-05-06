@@ -6,19 +6,30 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-
+		list: [],
+		belong: {
+			id: 0,
+			title: '推荐职位'
+		}
+	},
+	getData(flag) {
+		var self = this;
+		util.getData(function (data) {
+			var list = data.list;
+			list.map(function (item) {
+				item.show = item.belongs.indexOf(self.data.belong.id) > -1
+			})
+			self.setData({
+				list: list
+			});
+		}, flag);
 	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
-		let self = this;
-		util.getCompanyList(function(list){
-			self.setData({
-				list : list
-			})
-		});
+		this.getData(1);
 	},
 
 	
@@ -62,14 +73,42 @@ Page({
 	 * 页面上拉触底事件的处理函数
 	 */
 	onReachBottom: function () {
-
+		
 	},
 
 	/**
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-
+		var json = {
+			title: '育英职业技术学院 - 招聘会',
+			desc: '育英职业技术学院 - 招聘会',
+			path: '/pages/works/works'
+		}
+		return json;
+	},
+	changeBelong() {
+		var self = this;
+		var itemList = ['推荐职位', '信息技术分院', '民航交通分院', '商务贸易分院', '经济管理分院', '创意设计分院'];
+		wx.showActionSheet({
+			itemList: itemList,
+			success: function (res) {
+				var list = self.data.list;
+				list.map(function (item) {
+					item.show = item.belongs.indexOf(res.tapIndex) > -1
+				})
+				self.setData({
+					list: list,
+					belong: {
+						id: res.tapIndex,
+						title: itemList[res.tapIndex]
+					}
+				})
+			}
+		})
+	},
+	onPullDownRefresh() {
+		this.getData(2);
 	},
 	go(event) {
 		var companyId = event.currentTarget.dataset.companyId;

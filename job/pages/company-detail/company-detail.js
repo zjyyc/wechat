@@ -6,16 +6,18 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		statusBarHeight: app.globalData.statusBarHeight
 	},
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
 		var self = this;
-		if(!options.companyId){
-			options.companyId = '1556343865202189';
-		}
-		util.getCompanyList(function(list){
+		// if(!options.companyId){
+		// 	options.companyId = '1556343865202189';
+		// }
+		util.getData(function(data){
+			var list = data.list;
 			for(var i=0;i<list.length;i++){
 				if(list[i].id == options.companyId){
 					self.setData({

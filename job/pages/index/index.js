@@ -4,23 +4,27 @@ const util = require('../../utils/util.js');
 const app = getApp();
 Page({
     data: {
-        list : []
+		statusBarHeight: app.globalData.statusBarHeight,
+        list : [] ,
+		belong : {
+			id : 0 ,
+			title : '推荐公司'
+		}
     },
-	getData() {
+	getData(flag) {
 		var self = this;
-		util.getCompanyList(function(data){
-			var list = data.concat(data).concat(data);
+		util.getData(function(data){
+			var list = data.list;
 			list.map(function (item) {
-				item.avatar = self.getAvatar(item.pic);
+				item.show = item.belongs.indexOf(self.data.belong.id) > -1
 			})
 			self.setData({
 				list: list
 			});
-		});
-		
+		} , flag);
 	},
     onLoad: function() {
-        this.getData();
+        this.getData(1);
     },
     getUserInfo: function(e) {
         console.log(e)
@@ -30,25 +34,41 @@ Page({
             hasUserInfo: true
         })
     },
-	tap(){
+	/**
+	 * 用户点击右上角分享
+	 */
+	onShareAppMessage: function () {
+		var json = {
+			title: '育英职业技术学院 - 招聘会',
+			desc: '育英职业技术学院 - 招聘会',
+			path: '/pages/works/works'
+		}
+		return json;
+	},
+	onPullDownRefresh() {
+		this.getData(2);
+	},
+	changeBelong(){
+		var self = this;
+		var itemList = ['推荐公司', '信息技术分院', '民航交通分院', '商务贸易分院', '经济管理分院', '创意设计分院'];
 		wx.showActionSheet({
-			itemList: ['创意设计分院', '信息技术分院', '创意设计分院', '信息技术分院', '创意设计分院', '信息技术分院'],
+			itemList: itemList,
 			success : function(res){
-				console.log(res.tapIndex);
+				var list = self.data.list;
+				list.map(function(item){
+					item.show = item.belongs.indexOf(res.tapIndex) > -1
+				})
+				self.setData({
+					list : list , 
+					belong: {
+						id : res.tapIndex , 
+						title : itemList[res.tapIndex]
+					}
+				})
 			}
 		})
 	},
-	getAvatar(src) {
-		if (src.indexOf('http://x.eat163.com') == -1) {
-			return src;
-		}
-		else {
-			if (src.indexOf('?') > -1) {
-				src = src.split('?')[0];
-			}
-			return src += '?x-oss-process=image/resize,w_160';
-		}
-	},
+	
 	go(event){
 		var companyId = event.currentTarget.dataset.companyId;
 		wx.navigateTo({

@@ -1,1 +1,162 @@
-/* pages/resume/resume.wxss */
+.page{
+	padding-top:131rpx;
+	padding-bottom:100rpx;
+}
+.hd{
+	position: fixed;
+	padding-top:50rpx;
+	height: 80rpx;
+	background:rgb(251 , 251 , 251 );
+	opacity: 0.96;
+	left:0;
+	top:0;
+	width:750rpx;
+	z-index:1000;
+}
+.hd .back , .info .back{
+	position: fixed;
+	width:65rpx;
+	height: 65rpx;
+	left:20rpx;
+	z-index:1001;
+	text-align: left;
+	line-height: 65rpx;
+	padding-left: 15rpx;
+	top:48rpx;
+}
+.info .back{
+	z-index:1;
+}
+
+.hd .back:before , .info .back:before{
+	font-family: 'iconfont';
+	content : '\e610';
+	color:#333;
+	font-size: 45rpx;
+}
+.hd .title{
+	width:360rpx;
+	text-align: center;
+	font-size:32rpx;
+	overflow: hidden;
+	padding:6rpx 30rpx 12rpx;
+	margin:0 auto;
+	height: 32rpx;
+}
+
+button.login{
+	position: fixed;
+	left:75rpx;
+	top:50%;
+}
+button.login::before{
+	font-family: 'iconfont';
+	content : '\e63b';
+	margin-right:10rpx;
+	font-size:36rpx;
+}
+
+.box{
+	padding:40rpx;
+	background: #fff;
+	position: relative;
+}
+
+.clear{
+	float: none;
+	clear:both;
+}
+.box-hd{
+	position: relative;
+
+}
+.box-hd .line{
+	border-top:solid 1px #eee;
+	position: absolute;
+	top:18rpx;
+	left: 0 ;
+	right:0rpx;
+}
+.box .edit{
+	position: absolute;
+	top:30rpx;
+	right:0rpx;
+	width:100rpx;
+	height: 100rpx;
+	color:#06f;
+}
+.box .edit::before{
+	font-family: 'iconfont';
+	font-size:50rpx;
+	content : '\e60b';
+}
+.edit-box input{
+	width: 600rpx;
+	display: block;
+	margin:24rpx auto;
+	background:#efefef;
+	font-size:32rpx;
+	padding:20rpx 20rpx;
+	color:#333;
+}
+button{
+	margin: 0 auto 20rpx;
+	width:640rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	background:#06f;
+	text-align: center;
+	font-size: 32rpx;
+	color:#fff;
+	font-weight:bold;
+}
+
+.add{
+	margin-top: 100rpx;
+	margin-bottom:100rpx;
+}
+
+.businese .item{
+	height: 80rpx;
+	line-height: 80rpx;
+	font-size: 30rpx;
+}
+.businese .item .label{
+	float:left;
+	width:180rpx;
+	color:#666;
+}
+.businese .item .value{
+	float: left;
+	width: 490rpx;
+	overflow: hidden;
+	height: 60rpx;
+	color:#333;
+	text-align: left;
+}
+.pics image{
+	width:750rpx;
+}
+.pics view{
+	position: relative;
+}
+.pics view .del{
+	position: absolute;
+	width: 100rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	background:rgba(0 , 0 , 0 , 0.8);
+	top:50%;
+	left:50%;
+	text-align: center;
+	border-radius: 100rpx;
+	margin-left: -50rpx;
+	margin-top: -50rpx;
+}
+.pics view .del:before{
+	font-size: 50rpx;
+	color:#fff;
+	font-family: 'iconfont';
+	content : '\e611';
+}
+

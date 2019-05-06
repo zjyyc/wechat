@@ -1,5 +1,5 @@
-<view class='page'>
-	<view class='hd' style='opacity : {{opacity}}'>
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='opacity : {{opacity}};padding-top:{{statusBarHeight*2}}rpx;'>
 		<view class='back' bindtap='goBack'></view>
 		<view class='title'>{{company.name}}</view>
 	</view>

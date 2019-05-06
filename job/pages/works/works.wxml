@@ -1,12 +1,12 @@
 <!--index.wxml-->
-<view class="container">
-	<view class='hd'>
-		<view bindtap='tap'>
-			推荐职位
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
+		<view bindtap='changeBelong'>
+			{{belong.title}}
 		</view>
 	</view>
 	<view class='bd'>
-		<block wx:for='{{list}}' wx:for-item='company' wx:key='{{index}}'>
+		<block wx:for='{{list}}' wx:if='{{company.show}}' wx:for-item='company' wx:key='{{index}}'>
 			<view class='item' wx:for='{{company.jobs}}' wx:key='{{index}}' bindtap='go' 
 			data-company-id='{{company.id}}' data-job-id='{{item.id}}'>
 				<view class='title'>{{item.title}}</view>

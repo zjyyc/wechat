@@ -1,19 +1,18 @@
 .page{
-	padding-top:131rpx;
+	padding-bottom:150rpx;
 }
 .hd{
 	position: fixed;
-	padding-top:50rpx;
 	height: 80rpx;
-	background-color: rgba(255 , 255 , 255 ,0.96);
-	
+	background:rgb(251 , 251 , 251 );
+	opacity: 0.96;
 	left:0;
 	top:0;
 	width:750rpx;
 	z-index:1000;
 }
-.hd .back{
-	position: absolute;
+.hd .back , .info .back{
+	position: fixed;
 	width:65rpx;
 	height: 65rpx;
 	left:20rpx;
@@ -21,25 +20,29 @@
 	text-align: left;
 	line-height: 65rpx;
 	padding-left: 15rpx;
-	top:45rpx;
 }
-.hd .back:before{
+.info .back{
+	z-index:1;
+}
+
+.hd .back:before , .info .back:before{
 	font-family: 'iconfont';
 	content : '\e610';
 	color:#333;
 	font-size: 45rpx;
 }
+.info .back:before{
+	color:#fff;
+}
+
 .hd .title{
 	width:360rpx;
-	position: absolute;
-	left:195rpx;
 	text-align: center;
-	font-size:36rpx;
-	line-height: 40rpx;
-	top:55rpx;
-	height: 40rpx;
+	font-size:32rpx;
 	overflow: hidden;
-	color:#333;
+	padding:6rpx 30rpx 12rpx;
+	margin:0 auto;
+	height: 32rpx;
 }
 .work {
 	background: #fff;
@@ -52,7 +55,7 @@
 	padding:40rpx 30rpx;
 }
 .work .title{
-	font-size: 36rpx;
+	font-size: 32rpx;
 	font-weight: bold;
 	color:#333;
 }
@@ -71,7 +74,7 @@
 .location .icon{
 	position: absolute;
 	left: 0;
-	top: 32rpx;
+	top: 28rpx;
 }
 .location .icon:before{
 	font-family: 'iconfont';
@@ -241,10 +244,11 @@
 	padding:40rpx 40rpx 32rpx;
 }
 .panel-bd .item .title{
-	font-size: 36rpx;
+	font-size: 32rpx;
 	color:#333;
 	font-weight: bold;
-
+	height: 32rpx;
+	overflow: hidden;
 }
 .panel-bd .item .salary{
 	font-size: 28rpx;
@@ -253,6 +257,29 @@
 }
 .panel-bd .item .icon-right{
 	top : 55rpx;
+}
+.ft{
+	height: 100rpx;
+	position: fixed;
+	bottom:0;
+	left:0;
+	z-index:1000;
+	padding:20rpx;
+	width:710rpx;
+	background:rgba(251 , 251 , 251 , 0.96);
+	border-bottom:solid 1rpx rgb(238,238,238);
+}
+
+button{
+	margin: 0 auto;
+	width:640rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	background:#06f;
+	text-align: center;
+	font-size: 32rpx;
+	color:#fff;
+	font-weight:bold;
 }
 
 

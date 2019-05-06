@@ -1,2 +1,38 @@
-<!--pages/resume/resume.wxml-->
-<text>pages/resume/resume.wxml</text>
+<view class='page'>
+	<view class='hd'>
+		<view class='back' bindtap='goBack'></view>
+		<view class='title'>个人简历</view>
+	</view>
+	<view wx:if='{{loginData}}' class='bd'>
+		<view class='box edit-box' wx:if='{{loginData.edit}}'>
+			<input placeholder='姓名' bindinput='input' data-name='name' value='{{loginData.name}}' />
+			<input placeholder='班级' bindinput='input' data-name='class1' value='{{loginData.class1}}' />
+			<button bindtap='saveInfo'>确定</button>
+		</view>
+		<view class='box businese' wx:else>
+			<view class='edit' bindtap='editInfo'></view>
+			<view class='item'>
+				<view class='label'>姓名:</view>
+				<view class='value'>{{loginData.name}}</view>
+			</view>
+			<view class='item'>
+				<view class='label'>班级:</view>
+				<view class='value'>{{loginData.class1}}</view>
+			</view>
+			<view class='item'>
+				<view class='label'>电话号码:</view>
+				<view class='value'>{{loginData.tel}}</view>
+			</view>
+		</view>	
+		
+		<view class='pics'>
+			<view wx:for='{{pics}}' wx:key='{{index}}' wx:if='{{item.src}}'>
+				<image mode='widthFix' src='{{item.src}}' ></image>
+				<view class='del' bindtap='removePic' data-index='{{index}}'></view>
+			</view>
+		</view>
+
+		<button class='add' wx:if='{{pics.length < 20 && !loginData.edit}}' bindtap='add'>添加简历</button>
+	</view>
+	<button class='login' wx:else open-type="getPhoneNumber" bindgetphonenumber="login">微信帐号快速登陆</button>
+</view>

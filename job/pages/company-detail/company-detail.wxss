@@ -2,7 +2,7 @@
 	position: fixed;
 	padding-top:50rpx;
 	height: 80rpx;
-	background:rgb(251 , 251 , 251 );
+	background:rgba(251 , 251 , 251 , 0.96 );
 	border-bottom: solid 1px rgb(238 , 238 , 238);
 	left:0;
 	top:0;
@@ -273,10 +273,11 @@
 	padding:40rpx 40rpx 32rpx;
 }
 .panel-bd .item .title{
-	font-size: 36rpx;
+	font-size: 32rpx;
 	color:#333;
 	font-weight: bold;
-
+	height: 32rpx;
+	overflow: hidden;
 }
 .panel-bd .item .salary{
 	font-size: 28rpx;
