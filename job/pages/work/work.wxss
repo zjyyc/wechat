@@ -275,11 +275,24 @@ button{
 	width:640rpx;
 	height: 100rpx;
 	line-height: 100rpx;
-	background:#06f;
 	text-align: center;
 	font-size: 32rpx;
-	color:#fff;
 	font-weight:bold;
+	color:#888;
+	background: #ddd;
 }
+button:active{
+	color:#888;
+	background: #ddd;
+}
+.apply{
+	background:#06f;
+	color:#fff;
+}
+.apply:active{
+	background: #07f;
+	color:#fff;
+}
+
 
 

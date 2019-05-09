@@ -1,10 +1,8 @@
 .page{
-	padding-top:131rpx;
 	padding-bottom:100rpx;
 }
 .hd{
 	position: fixed;
-	padding-top:50rpx;
 	height: 80rpx;
 	background:rgb(251 , 251 , 251 );
 	opacity: 0.96;
@@ -22,7 +20,6 @@
 	text-align: left;
 	line-height: 65rpx;
 	padding-left: 15rpx;
-	top:48rpx;
 }
 .info .back{
 	z-index:1;
@@ -46,7 +43,7 @@
 
 button.login{
 	position: fixed;
-	left:75rpx;
+	left:55rpx;
 	top:50%;
 }
 button.login::before{
@@ -84,6 +81,7 @@ button.login::before{
 	width:100rpx;
 	height: 100rpx;
 	color:#06f;
+	z-index: 900;
 }
 .box .edit::before{
 	font-family: 'iconfont';

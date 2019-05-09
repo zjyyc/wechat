@@ -6,6 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		statusBarHeight: app.globalData.statusBarHeight,
 		loginData: util.getLoginData() ,
 		pics : []
 	},
@@ -50,7 +51,13 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		var loginData = util.getLoginData();
+		if (!loginData) {
+			return;
+		}
+		this.setData({
+			loginData: loginData
+		})
 	},
 
 	/**

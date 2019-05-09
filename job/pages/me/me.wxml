@@ -1,3 +1,25 @@
-<view>
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
+		<view bindtap='changeType'>
+			{{belong.title}}
+		</view>
+	</view>
+	<view class='bd' wx:if='{{loginData}}'>
+		<view class='item' wx:for='{{applyList}}' wx:key='{{index}}' data-company-id='{{item.company_id}}' data-job-id='{{item.job_id}}' bindtap='go'>
+			<view class='title'>{{map[item.job_id].title}}</view>
+			<view class='date'>{{item.date}}</view>
+			<view class='salary'>{{map[item.job_id].salary || '面议'}}</view>
+			<view class='company'>{{map[item.job_id].companyName}}</view>
+			<view class='status'>面试中</view>
+		</view>
 
+		<view wx:if='{{applyList && applyList.length == 0}}'>
+			<image class='none' mode='widthFix' src='http://x.eat163.com/6948803220.jpg?x-oss-process=image/resize,w_750'></image>
+		</view>
+
+		<view class='logout'>
+			<button bindtap='logout'>退出登陆</button>
+		</view>
+	</view>
+	<button class='login' wx:else open-type="getPhoneNumber" bindgetphonenumber="login">微信帐号快速登陆</button>
 </view>

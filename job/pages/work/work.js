@@ -6,7 +6,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		statusBarHeight: app.globalData.statusBarHeight
+		statusBarHeight: app.globalData.statusBarHeight 
 	},
 
 	/**
@@ -14,9 +14,10 @@ Page({
 	 */
 	onLoad: function (options) {
 		var self = this;
-		if (!options.companyId){
-			options = { companyId: "271", jobId: "275" };
-		}
+		// if (!options.companyId){
+		// 	options = { companyId: "271", jobId: "275" };
+		// }
+		this.data.options = options;
 		util.getData(function(data){
 			var list = data.list;
 			var company = null; var job = null;
@@ -34,11 +35,12 @@ Page({
 					break;
 				}
 			}
-			console.log(company);
-			console.log(job);
+			var hasApply = !!(util.getApplyData()[job.id]);
+			console.log(hasApply);
 			self.setData({
 				company : company , 
-				job : job
+				job : job , 
+				hasApply: hasApply
 			})
 
 		});
@@ -141,5 +143,43 @@ Page({
 			url: '/pages/work/work?companyId=' + companyId + '&jobId=' + jobId
 		})
 	},
-	
+	apply(){
+		var self = this;
+		var loginData = util.getLoginData();
+		if(!loginData || !loginData.name || !loginData.class1 || !loginData.pics){
+			wx.showModal({
+				title : '申请职位需要先上传简历' , 
+				content : '' ,
+				confirmText : '上传简历' ,
+				success : function(res){
+					if (res.confirm){
+						wx.switchTab({
+							url: '/pages/resume/resume'
+						});
+					}
+				}
+			});
+			return;
+		}
+		var data = {
+			tel: loginData.tel,
+			companyId: this.data.options.companyId,
+			jobId: this.data.options.jobId
+		};
+		wx.request({
+			url: 'https://www.eat163.com/wechat/apply.json' ,
+			data: data,
+			method: 'POST',
+			header: {
+				'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
+			},
+			success : function(json){
+				util.setApplyData(data);
+				self.setData({
+					hasApply : true
+				});
+				wx.setStorageSync('refreshMe', true);
+			}
+		})
+	}
 })

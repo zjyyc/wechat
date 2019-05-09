@@ -6,11 +6,13 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		statusBarHeight: app.globalData.statusBarHeight,
 		list: [],
 		belong: {
 			id: 0,
 			title: '推荐职位'
-		}
+		},
+		loadTime: new Date().getTime()
 	},
 	getData(flag) {
 		var self = this;
@@ -45,7 +47,10 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		if (new Date().getTime() - this.data.loadTime > 30 * 60 * 1000) {
+			this.data.loadTime = new Date().getTime();
+			this.getData(1);
+		}
 	},
 
 	/**
@@ -62,12 +67,7 @@ Page({
 
 	},
 
-	/**
-	 * 页面相关事件处理函数--监听用户下拉动作
-	 */
-	onPullDownRefresh: function () {
-
-	},
+	
 
 	/**
 	 * 页面上拉触底事件的处理函数
@@ -89,13 +89,21 @@ Page({
 	},
 	changeBelong() {
 		var self = this;
-		var itemList = ['推荐职位', '信息技术分院', '民航交通分院', '商务贸易分院', '经济管理分院', '创意设计分院'];
+		var itemList = ['推荐职位', '民航交通分院', '信息技术分院',  '商务贸易分院', '经济管理分院', '创意设计分院'];
 		wx.showActionSheet({
 			itemList: itemList,
 			success: function (res) {
 				var list = self.data.list;
+				//因为民航要排第一。此处民航跟信息交换
+				var index = res.tapIndex;
+				if (index == 1) {
+					index = 2;
+				}
+				else if (index == 2) {
+					index = 1;
+				}
 				list.map(function (item) {
-					item.show = item.belongs.indexOf(res.tapIndex) > -1
+					item.show = item.belongs.indexOf(index) > -1
 				})
 				self.setData({
 					list: list,

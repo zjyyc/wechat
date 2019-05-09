@@ -1,11 +1,10 @@
 {
 	"pages": [
-		"pages/work/work",
-		"pages/works/works",
 		"pages/me/me",
 		"pages/resume/resume",
+		"pages/work/work",
+		"pages/works/works",
 		"pages/index/index",
-		
 		"pages/company-detail/company-detail"
 	],
 	"window": {

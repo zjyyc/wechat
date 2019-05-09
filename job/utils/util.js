@@ -26,7 +26,7 @@ function getAvatar(src) {
 
 function getData(fn , flag){
 	var time = wx.getStorageSync('get-data-time');
-	if (!flag || flag == 1 && time && (new Date().getTime() - time < 1800 * 1000)){
+	if (!flag || (flag == 1 && time && (new Date().getTime() - time < 1800 * 1000))){
 		console.log(1800 * 1000 - new Date().getTime() + time  );
 		wx.getStorage({
 			key : 'data' ,
@@ -79,10 +79,8 @@ function getLoginData(){
 }
 function login( detail , fn){
 	if (detail && detail.iv) {
-		wx.showToast({
-			title: '登陆中....',
-			icon: 'loading',
-			duration: 5000
+		wx.showLoading({
+			title: '登陆中....'
 		});
 		wx.login({
 			success: function (json) {
@@ -96,9 +94,19 @@ function login( detail , fn){
 						'content-type': 'application/x-www-form-urlencoded;charset=utf-8',
 					},
 					success: function (json) {
-						wx.setStorageSync('login', json.data);
-						fn(json.data);
-						wx.hideToast();
+						wx.hideLoading();
+						if(typeof json.data == 'string' && json.data.indexOf('<html>' > -1)){
+							wx.showModal({
+								title: '登陆失败，请稍后再试',
+								content: '',
+								showCancel: false
+							})
+						}
+						else{
+							wx.setStorageSync('login', json.data);
+							fn(json.data);
+						}
+						
 					}
 				})
 			}
@@ -106,10 +114,21 @@ function login( detail , fn){
 	}
 }
 
+function getApplyData(){
+	var applyData = wx.getStorageSync('applyData') || {};
+	return applyData;
+}
+function setApplyData(json){
+	var applyData = getApplyData();
+	applyData[json.jobId] = json;
+	wx.setStorageSync('applyData', applyData);
+}
 
 
 module.exports = {
 	getData: getData,
 	getLoginData: getLoginData ,
-	login : login
+	login : login , 
+	getApplyData: getApplyData ,
+	setApplyData: setApplyData
 }

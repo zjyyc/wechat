@@ -63,7 +63,8 @@
 			</view>
 		</view>
 		<view class='ft'>
-			<button class='apply' >申请该职位</button>
+			<button wx:if='{{hasApply}}'  >已申请</button>
+			<button wx:else class='apply' bindtap='apply'>申请该职位</button>
 		</view>
 	</view>
 </view>

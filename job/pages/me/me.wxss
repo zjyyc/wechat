@@ -1,1 +1,112 @@
-/* pages/me/me.wxss */
+.hd{
+	background:rgba(251 , 251 , 251 , 0.96);
+	position: fixed;
+	text-align: center;
+	left:0;
+	top:0;
+	width:750rpx;
+	height: 80rpx;
+	font-size:32rpx;
+	z-index:1000;
+	border-bottom: solid 1px rgb(238 , 238 , 238);
+}
+.hd view{
+	display: inline-block;
+	padding:6rpx 30rpx 12rpx;
+}
+.hd view:after1{
+	font-family: 'iconfont';
+	content: '\e662';
+	color:#666;
+	font-size:24rpx;
+}
+
+.page{
+	overflow: hidden;
+	width:750rpx;
+	background: #efefef;
+}
+
+button{
+	margin: 0 auto 20rpx;
+	width:640rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	background:#06f;
+	text-align: center;
+	font-size: 32rpx;
+	color:#fff;
+	font-weight:bold;
+}
+button.login{
+	position: fixed;
+	left:55rpx;
+	top:50%;
+}
+button.login::before{
+	font-family: 'iconfont';
+	content : '\e63b';
+	margin-right:10rpx;
+	font-size:36rpx;
+}
+
+.item{
+	position: relative;
+	padding:40rpx;
+	margin-bottom:20rpx;
+	background:#fff;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+.item .title{
+	font-size: 32rpx;
+	color:#333;
+	font-weight: bold;
+	height: 32rpx;
+	width:450rpx;
+	overflow: hidden;
+}
+.item .date{
+	font-size: 24rpx;
+	color:#999;
+	position: absolute;
+	right:40rpx;
+	top:40rpx;
+	margin-top:4rpx;
+}
+.item .salary{
+	font-size:28rpx;
+	color:#f30;
+	font-weight: bold;
+	margin-top:32rpx;
+}
+
+.item .company{
+	margin-top: 20rpx;
+	font-size:24rpx;
+	color:#666;
+}
+.item .status{
+	position: absolute;
+	color:#06f;
+	right:40rpx;
+	font-size:28rpx;
+	bottom:38rpx;
+}
+.none{
+	width:750rpx;
+	display: block;
+	margin:-100rpx 0 ;
+
+}
+.logout{
+	padding:32rpx 0;
+	background:#fff;
+	position: relative;
+	z-index:1;
+}
+.logout button{
+	color:#666;
+	background: #ddd;
+}
+

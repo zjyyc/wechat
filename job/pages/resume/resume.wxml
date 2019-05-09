@@ -1,6 +1,5 @@
-<view class='page'>
-	<view class='hd'>
-		<view class='back' bindtap='goBack'></view>
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
 		<view class='title'>个人简历</view>
 	</view>
 	<view wx:if='{{loginData}}' class='bd'>

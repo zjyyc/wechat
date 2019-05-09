@@ -19,7 +19,6 @@
 	text-align: left;
 	line-height: 65rpx;
 	padding-left: 15rpx;
-	top:48rpx;
 }
 .info .back{
 	z-index:1;
