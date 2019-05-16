@@ -26,7 +26,6 @@ Page({
 	},
     onLoad: function() {
 		this.getData(1);
-		
     },
 	onShow: function () {
 		if(new Date().getTime() - this.data.loadTime > 30 * 60 * 1000){
@@ -49,7 +48,7 @@ Page({
 		var json = {
 			title: '育英职业技术学院 - 招聘会',
 			desc: '育英职业技术学院 - 招聘会',
-			path: '/pages/works/works'
+			path: '/pages/index/index'
 		}
 		return json;
 	},

@@ -1,14 +1,9 @@
-<!--index.wxml-->
-<view class="page">
-    <view class='back' bindtap='back' wx:if='{{from=="index"}}'>
-        <image src='http://x.eat163.com/54702360568.png' />
-    </view>
-    
-    <view wx:for="{{list}}" wx:key='{{index}}'>
+<template name='introduce'>
+	<view class='introduce' wx:for="{{introduce}}"  wx:key='{{index}}'>
         <view wx:if='{{item.type==1}}' class='text'>
             {{item.value}}
         </view>
-        <image wx:if='{{item.type==2}}'  class='image' src='{{item.pic}}' mode='widthFix'></image>
+        <image wx:if='{{item.type==2}}'  class='image' src='{{item.value}}?x-oss-process=image/resize,w_750' mode='widthFix'></image>
         <video wx:if='{{item.type==3}}' show-fullscreen-btn='{{false}}' autoplay='{{index == 0 ? true : false}}' id='{{"video-" + index}}' class='video' src="{{item.value}}" loop='true' show-mute-btn='true' muted='{{index==0 ? false : true}}' style='height : {{item.extra}}rpx;'></video>
         <view wx:if='{{item.type == 4}}' class='form'>
             <block wx:if='{{!item.status || item.status == 0}}'>
@@ -32,4 +27,4 @@
 		bindmarkertap="markertap" bindcallouttap='markertap'  >
 		</map>
 	</view>
-</view>
+</template>

@@ -27,6 +27,20 @@
 		</view>
 		<view class='box'>
 			<view class='box-hd'>
+				<view class='title'>联系电话</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd businese'>
+				<view class='item' wx:for='{{company.hrs}}' wx:key='{{index}}'>
+					<view class='label'>{{item.name}}</view>
+					<view class='value tel' bindtap='ringUp' data-tel='{{item.tel}}'>{{item.tel}}</view>
+				</view>
+				
+			</view>
+		</view>
+
+		<view class='box'>
+			<view class='box-hd'>
 				<view class='title'>工商信息</view>
 				<view class='line'></view>
 			</view>

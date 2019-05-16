@@ -293,6 +293,27 @@ button:active{
 	background: #07f;
 	color:#fff;
 }
+.businese .item{
+	height: 60rpx;
+	line-height: 60rpx;
+	font-size: 26rpx;
+}
+.businese .item .label{
+	float:left;
+	width:190rpx;
+	color:#888;
+}
+.businese .item .value{
+	float: left;
+	width: 460rpx;
+	overflow: hidden;
+	height: 60rpx;
+	color:#333;
+}
+.businese .item .tel{
+	color:#06f;
+	font-weight: bold;
+}
 
 
 

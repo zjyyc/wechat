@@ -74,7 +74,12 @@ Page({
 	 * 用户点击右上角分享
 	 */
 	onShareAppMessage: function () {
-
+		var json = {
+			title: '育英职业技术学院 - 招聘会',
+			desc: '育英职业技术学院 - 招聘会',
+			path: '/pages/company-detail/company-detail?companyId=' + this.data.company.id
+		}
+		return json;
 	},
 	onPageScroll: function (event) {
 		var top = event.scrollTop;
@@ -102,6 +107,7 @@ Page({
 		})
 	},
 	goBack() {
+		
 		if (getCurrentPages().length == 1) {
 			wx.reLaunch({
 				url: '/pages/index/index'
@@ -113,10 +119,12 @@ Page({
 			});
 		}
 	},
-	getPhoneNumber : function(e){
-		console.log(e);
-		console.log(e.detail.errMsg)
-		console.log(e.detail.iv)
-		console.log(e.detail.encryptedData)
+	ringUp(event) {
+		var tel = event.currentTarget.dataset.tel;
+		wx.makePhoneCall({
+			phoneNumber: tel //仅为示例，并非真实的电话号码
+		});
+		return false;
 	}
+
 })

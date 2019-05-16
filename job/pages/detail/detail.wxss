@@ -1,16 +1,53 @@
 /**index.wxss**/
-.back{
-	position: fixed;
-	left:36rpx;
-	top:56rpx;
-	z-index:1000;
-	width:60rpx;
-	height: 49rpx;
+.page{
+	padding-bottom:100rpx;
 }
-.back image{
-	width : 40rpx;
-	height:  40rpx;
-	display: block;
+.refresh-loading{
+	font-size: 32rpx;
+	color:#888;
+	text-align: center;
+	width:750rpx;
+	position: absolute;
+	top:50rpx;
+}
+.hd{
+	position: fixed;
+	height: 80rpx;
+	background:rgb(251 , 251 , 251 );
+	opacity: 0.96;
+	left:0;
+	top:0;
+	width:750rpx;
+	z-index:1000;
+}
+.hd .back , .info .back{
+	position: fixed;
+	width:65rpx;
+	height: 65rpx;
+	left:20rpx;
+	z-index:1001;
+	text-align: left;
+	line-height: 65rpx;
+	padding-left: 15rpx;
+}
+.info .back{
+	z-index:1;
+}
+
+.hd .back:before , .info .back:before{
+	font-family: 'iconfont';
+	content : '\e610';
+	color:#333;
+	font-size: 45rpx;
+}
+.hd .title{
+	width:360rpx;
+	text-align: center;
+	font-size:32rpx;
+	overflow: hidden;
+	padding:6rpx 30rpx 12rpx;
+	margin:0 auto;
+	height: 32rpx;
 }
 .video {
     width: 750rpx;
@@ -39,7 +76,7 @@
 	color:#fff;
 	font-weight:bold;
 }
-.form input{
+.form input , .form textarea{
 	width: 600rpx;
 	display: block;
 	margin:24rpx auto;
@@ -48,6 +85,11 @@
 	padding:20rpx 20rpx;
 	color:#333;
 }
+.form textarea{
+	line-height: 50rpx;
+}
+
+
 .form {
 	margin:100rpx 0;
 }

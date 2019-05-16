@@ -6,7 +6,8 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
-		statusBarHeight: app.globalData.statusBarHeight 
+		statusBarHeight: app.globalData.statusBarHeight ,
+		loginData : util.getLoginData()
 	},
 
 	/**
@@ -14,9 +15,6 @@ Page({
 	 */
 	onLoad: function (options) {
 		var self = this;
-		// if (!options.companyId){
-		// 	options = { companyId: "271", jobId: "275" };
-		// }
 		this.data.options = options;
 		util.getData(function(data){
 			var list = data.list;
@@ -58,7 +56,9 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
-
+		this.setData({
+			loginData: util.getLoginData()
+		})
 	},
 
 	/**
@@ -96,7 +96,7 @@ Page({
 		var json = {
 			title: '育英职业技术学院 - 招聘会',
 			desc: '育英职业技术学院 - 招聘会',
-			path: '/pages/works/works'
+			path: '/pages/work/work?companyId=' + this.data.options.companyId + '&jobId=' + this.data.options.jobId
 		}
 		return json;
 	},
@@ -164,7 +164,8 @@ Page({
 		var data = {
 			tel: loginData.tel,
 			companyId: this.data.options.companyId,
-			jobId: this.data.options.jobId
+			jobId: this.data.options.jobId ,
+			name : loginData.name
 		};
 		wx.request({
 			url: 'https://www.eat163.com/wechat/apply.json' ,
@@ -181,5 +182,12 @@ Page({
 				wx.setStorageSync('refreshMe', true);
 			}
 		})
+	},
+	ringUp(event) {
+		var tel = event.currentTarget.dataset.tel;
+		wx.makePhoneCall({
+			phoneNumber: tel //仅为示例，并非真实的电话号码
+		});
+		return false;
 	}
 })

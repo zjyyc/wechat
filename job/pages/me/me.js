@@ -16,7 +16,6 @@ Page({
 		map : {} ,
 		loadTime: new Date().getTime()
 	},
-
 	getApplyData(){
 		var self = this;
 		wx.showLoading({
@@ -41,16 +40,42 @@ Page({
 				self.setData({
 					applyList : json.data
 				});
-				
 				wx.setStorageSync('applyData', applyData);
 				wx.hideLoading();
 				wx.stopPullDownRefresh();
 			}
 		})
 	},
-
-
-
+	getApplyDataByCompany(){
+		var self = this;
+		var loginData = util.getLoginData();
+		if(!loginData.company){
+			return;
+		}
+		wx.showLoading({
+			title: '加载中。。。',
+		})
+		wx.request({
+			url: 'https://www.eat163.com/wechat/get-apply-list-by-company.json',
+			data : {
+				companyId: util.getLoginData().company.id
+			},
+			success : function(json){
+				json.data.map(function (item) {
+					item.date = item.gmt_time.substring(5, 10);
+					item.companyId = item.company_id;
+					item.jobId = item.job_id;
+				});
+				self.setData({
+					companyApplyList: json.data
+				});
+				wx.setStorageSync('companyApplyList', json.data);
+				wx.hideLoading();
+				wx.stopPullDownRefresh();
+				console.log(json)
+			}
+		})
+	},
 	getJobData(flag){
 		var self = this;
 		util.getData(function (data) {
@@ -76,6 +101,7 @@ Page({
 	init : function(){
 		this.getJobData();
 		this.getApplyData();
+		this.getApplyDataByCompany();
 	},
 
 	/**
@@ -83,6 +109,7 @@ Page({
 	 */
 	onLoad: function (options) {
 		this.init();
+		
 	},
 
 	/**
@@ -130,6 +157,7 @@ Page({
 	onPullDownRefresh: function () {
 		this.getApplyData();
 		this.getJobData(2);
+		this.getApplyDataByCompany();
 	},
 
 	/**
@@ -155,6 +183,13 @@ Page({
 			url: '/pages/work/work?companyId=' + companyId + '&jobId=' + jobId
 		})
 	},
+	goStudent(event){
+		var tel = event.currentTarget.dataset.tel;
+		var jobId = event.currentTarget.dataset.jobId;
+		wx.navigateTo({
+			url: '/pages/student/student?tel=' + tel + '&jobId=' + jobId
+		})
+	},
 	login(e) {
 		var self = this;
 		util.login(e.detail, function (data) {
@@ -171,5 +206,12 @@ Page({
 		this.setData({
 			loginData : ''
 		})
+	},
+	ringUp(event) {
+		var tel = event.currentTarget.dataset.tel;
+		wx.makePhoneCall({
+			phoneNumber: tel //仅为示例，并非真实的电话号码
+		});
+		return false;
 	}
 })

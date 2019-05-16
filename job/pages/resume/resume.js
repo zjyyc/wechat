@@ -8,7 +8,9 @@ Page({
 	data: {
 		statusBarHeight: app.globalData.statusBarHeight,
 		loginData: util.getLoginData() ,
-		pics : []
+		pics : [] ,
+		title : '个人简历' ,
+		introduce : []
 	},
 
 	/**
@@ -33,8 +35,10 @@ Page({
 		})
 		this.setData({
 			loginData: loginData,
-			pics: pics
+			pics: pics ,
+			title: loginData.company ? loginData.name : '个人简历'
 		})
+
 	},
 	onLoad: function (options) {
 		this.init();
@@ -51,13 +55,20 @@ Page({
 	 * 生命周期函数--监听页面显示
 	 */
 	onShow: function () {
+		var self = this;
 		var loginData = util.getLoginData();
-		if (!loginData) {
-			return;
-		}
 		this.setData({
 			loginData: loginData
-		})
+		});
+		if(loginData.company){
+			util.getData(function(data){
+				var config = data.config;
+				self.setData({
+					introduce : config.introList[1].intro
+				})
+				console.log(config);
+			})
+		}
 	},
 
 	/**
@@ -199,8 +210,13 @@ Page({
 		var self = this;
 		util.login(e.detail , function(data){
 			self.init();
+			wx.setStorageSync('refreshMe', true);
 		})
-		
+	},
+	jump(){
+		wx.switchTab({
+			url: '/pages/detail/detail',
+		})
 	},
 	removePic(event){
 		var self = this;

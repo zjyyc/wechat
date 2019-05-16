@@ -37,6 +37,20 @@
 
 		<view class='box'>
 			<view class='box-hd'>
+				<view class='title'>联系电话</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd businese'>
+				<view class='item' wx:for='{{company.hrs}}' wx:key='{{index}}'>
+					<view class='label'>{{item.name}}</view>
+					<view class='value tel' bindtap='ringUp' data-tel='{{item.tel}}'>{{item.tel}}</view>
+				</view>
+				
+			</view>
+		</view>
+
+		<view class='box'>
+			<view class='box-hd'>
 				<view class='title'>公司信息</view>
 				<view class='line'></view>
 			</view>
@@ -62,7 +76,8 @@
 				</view>
 			</view>
 		</view>
-		<view class='ft'>
+		<view wx:if='{{loginData && loginData.company}}'></view>
+		<view class='ft' wx:else>
 			<button wx:if='{{hasApply}}'  >已申请</button>
 			<button wx:else class='apply' bindtap='apply'>申请该职位</button>
 		</view>

@@ -10,6 +10,14 @@
 	z-index:1000;
 	border-bottom: solid 1px rgb(238 , 238 , 238);
 }
+.refresh-loading{
+	font-size: 32rpx;
+	color:#888;
+	text-align: center;
+	width:750rpx;
+	position: absolute;
+	top:50rpx;
+}
 .hd view{
 	display: inline-block;
 	padding:6rpx 30rpx 12rpx;
@@ -50,7 +58,95 @@ button.login::before{
 	font-size:36rpx;
 }
 
-.item{
+.node .name-class{
+	margin-top:32rpx;
+	font-size:28rpx;
+	height: 28rpx;
+}
+.node .name{
+	color:#333;
+	font-weight: bold;
+	float: left;
+	margin-right: 20rpx;
+}
+.node .class1{
+	float: left;
+	color:#666;
+}
+.node .tel{
+	padding:20rpx 0 ;
+	color:#06f;
+	font-size:28rpx;
+	display: inline-block;
+}
+.node .tel::before{
+	content : '\e600';
+	font-family: 'iconfont';
+	margin-right: 10rpx;
+	font-size:28rpx;
+}
+.node .icon-right{
+	position: absolute;
+	right: 30rpx;
+	top: 110rpx;
+}
+.node .icon-right:before{
+	font-family: 'iconfont';
+	content : '\e602';
+	font-size:50rpx;
+	color:#999;
+}
+ .has-accept ,  .has-reject{
+	position: absolute;
+	width:200rpx;
+	height: 80rpx;
+	border-radius: 16rpx;
+	border:solid 2rpx #f30;
+	text-align: center;
+	line-height: 80rpx;
+	top:60rpx;
+	right:150rpx;
+	font-size: 36rpx;
+	font-weight: bold;
+	transform:rotate(-20deg);
+	opacity: 0.7;
+	color:#f30;
+}
+ .has-reject{
+	border-color:#333;
+	color:#333;
+}
+
+.node-ft{
+	border-top:solid 1rpx #eee;
+	padding-top:20rpx;
+	display: none;
+}
+.node-ft .op {
+	height: 50rpx;
+	position: relative;
+}
+.node-ft .accept , .node-ft .reject{
+	position: absolute;
+	top:0;
+	border:solid 1rpx #ddd;
+	padding:15rpx 40rpx;
+	font-size:28rpx;
+}
+.node-ft .accept{
+	background:#06f;
+	border-color:#05f;
+	color:#fff;
+	right: 0;
+}
+.node-ft .reject{
+	right: 160rpx;
+	color:#333;
+	background:#efefef;
+}
+
+
+.node , .item{
 	position: relative;
 	padding:40rpx;
 	margin-bottom:20rpx;
@@ -58,7 +154,7 @@ button.login::before{
 	box-sizing: border-box;
 	overflow: hidden;
 }
-.item .title{
+.node .title , .item .title{
 	font-size: 32rpx;
 	color:#333;
 	font-weight: bold;
@@ -66,7 +162,7 @@ button.login::before{
 	width:450rpx;
 	overflow: hidden;
 }
-.item .date{
+.node .date , .item .date{
 	font-size: 24rpx;
 	color:#999;
 	position: absolute;

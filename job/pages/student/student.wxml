@@ -1,0 +1,53 @@
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
+		<view class='back' bindtap='goBack' style='top:{{statusBarHeight*2-2}}rpx'></view>
+		<view class='title'>{{item.name}}的简历</view>
+	</view>
+	<view class='bd' style=''>
+		<view class='box'>
+			<view class='box-hd'>
+				<view class='title'>基本信息</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd basic'>
+				<view class='item'>
+					<view class='label'>申请职位:</view>
+					<view class='value'>{{map[item.jobId].title}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>姓名:</view>
+					<view class='value'>{{item.name}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>班级:</view>
+					<view class='value'>{{item.class1}}</view>
+				</view>
+				<view class='item'>
+					<view class='label'>手机号码:</view>
+					<view class='value'>{{item.tel}}</view>
+				</view>
+				
+			</view>
+		</view>
+		<view class='box'>
+			<view class='box-hd'>
+				<view class='title'>学生简历</view>
+				<view class='line'></view>
+			</view>
+			<view class='box-bd'>
+				<view class='pics'>
+					<image wx:for='{{pics}}' wx:key='{{index}}' mode='widthFix' src='{{item}}' ></image>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class='ft'>
+		<block wx:if='{{item.type == 0}}'>
+			<view class='btn reject' bindtap='setType' data-type='-1'>拒绝</view>
+			<view class='btn accept' bindtap='setType' data-type='1'>录取</view>
+		</block>
+		<view class='has-reject' wx:if='{{item.type == -1}}'>已拒绝</view>
+		<view class='has-accept' wx:if='{{item.type == 1}}'>已录取</view>
+		<view class='btn call' data-tel='{{item.tel}}'>一键播号</view>
+	</view>
+</view>

@@ -1,5 +1,6 @@
 <!--index.wxml-->
 <view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='refresh-loading' style='top:{{statusBarHeight * 2}}rpx;'>下拉刷新 ...</view>
 	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
 		<view bindtap='changeBelong'>
 			{{belong.title}}

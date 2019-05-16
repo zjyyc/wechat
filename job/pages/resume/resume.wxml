@@ -1,8 +1,8 @@
 <view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
 	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
-		<view class='title'>个人简历</view>
+		<view class='title'>{{title}}</view>
 	</view>
-	<view wx:if='{{loginData}}' class='bd'>
+	<view wx:if='{{loginData && !loginData.company}}' class='bd'>
 		<view class='box edit-box' wx:if='{{loginData.edit}}'>
 			<input placeholder='姓名' bindinput='input' data-name='name' value='{{loginData.name}}' />
 			<input placeholder='班级' bindinput='input' data-name='class1' value='{{loginData.class1}}' />
@@ -33,5 +33,13 @@
 
 		<button class='add' wx:if='{{pics.length < 20 && !loginData.edit}}' bindtap='add'>添加简历</button>
 	</view>
+	<view wx:elif='{{loginData && loginData.company}}'>
+		<view class='welcome'>欢迎光临</view>
+		<view class='school'>育英职业技术学院招聘会</view>
+		<button class='jump' bindtap='jump'>
+			我要开发小程序、APP
+		</button>
+	</view>
+	
 	<button class='login' wx:else open-type="getPhoneNumber" bindgetphonenumber="login">微信帐号快速登陆</button>
 </view>

@@ -1,19 +1,21 @@
 <!--index.wxml-->
-<view class="page">
-    <view class='back' bindtap='back' wx:if='{{from=="index"}}'>
-        <image src='http://x.eat163.com/54702360568.png' />
-    </view>
+<view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='refresh-loading' style='top:{{statusBarHeight * 2}}rpx;'>下拉刷新 ...</view>
+	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
+		<view class='title'>慧聚点</view>
+	</view>
     
     <view wx:for="{{list}}" wx:key='{{index}}'>
-        <view wx:if='{{item.type==1}}' class='text'>
+        <view wx:if='{{item.type==1}}' class='text' style='{{item.extra}}'>
             {{item.value}}
         </view>
         <image wx:if='{{item.type==2}}'  class='image' src='{{item.pic}}' mode='widthFix'></image>
         <video wx:if='{{item.type==3}}' show-fullscreen-btn='{{false}}' autoplay='{{index == 0 ? true : false}}' id='{{"video-" + index}}' class='video' src="{{item.value}}" loop='true' show-mute-btn='true' muted='{{index==0 ? false : true}}' style='height : {{item.extra}}rpx;'></video>
         <view wx:if='{{item.type == 4}}' class='form'>
             <block wx:if='{{!item.status || item.status == 0}}'>
-                <input bindinput="input" type='{{item=="电话号码" ? "number" : "text"}}' data-name='{{item}}' wx:for='{{info.fields}}' placeholder='{{item}}' wx:key='{{index}}' value='{{info.formData[item]}}' />
-                <view class='button' data-index='{{index}}' bindtap='save' style='background-color:{{info.btnBg}}'>{{info.btnText || '预约参观'}}</view>
+                <input  bindinput="input" type='{{item=="电话号码" ? "number" : "text"}}' data-name='{{item}}' wx:for='{{info.fields}}' placeholder='{{item}}' wx:key='{{index}}' value='{{info.formData[item]}}' />
+                <textarea bindinput="input" data-name='描述' value='{{info.formData["描述"]}}' placeholder='开发合作意向，如网站开发、小程序开发、APP开发，以及简略描述该网站或者小程序的功能'></textarea>
+				<view class='button' data-index='{{index}}' bindtap='save' style='background-color:{{info.btnBg}}'>{{info.btnText || '预约参观'}}</view>
             </block>
             <block wx:if='{{item.status}}'>
                 <view class='title'>您的资料已成功提交！</view>

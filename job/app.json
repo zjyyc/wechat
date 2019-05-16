@@ -1,10 +1,12 @@
 {
 	"pages": [
-		"pages/me/me",
+		"pages/index/index",
+		"pages/detail/detail",
 		"pages/resume/resume",
+		"pages/me/me",
+		"pages/student/student",
 		"pages/work/work",
 		"pages/works/works",
-		"pages/index/index",
 		"pages/company-detail/company-detail"
 	],
 	"window": {
@@ -29,6 +31,12 @@
 				"text": "职位",
 				"iconPath": "images/work.png",
 				"selectedIconPath": "images/work-selected.png"
+			},
+			{
+				"pagePath": "pages/detail/detail",
+				"text": "合作",
+				"iconPath": "images/code.png",
+				"selectedIconPath": "images/code-selected.png"
 			},
 			{
 				"pagePath": "pages/resume/resume",

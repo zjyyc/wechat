@@ -1,34 +1,20 @@
-/**index.wxss**/
-.back{
-	position: fixed;
-	left:36rpx;
-	top:56rpx;
-	z-index:1000;
-	width:60rpx;
-	height: 49rpx;
-}
-.back image{
-	width : 40rpx;
-	height:  40rpx;
-	display: block;
-}
-.video {
+.introduce .video {
     width: 750rpx;
     height: 480rpx;
     display: block;
 }
-.text{
+.introduce .text{
     font-size: 28rpx;
     text-indent: 56rpx;
     margin:24rpx;
     line-height: 1.5;
 }
-.image{
+.introduce .image{
     width: 750rpx;
     display: block;
 }
 
-.button{
+.introduce .button{
 	margin: 0 auto 20rpx;
 	width:640rpx;
 	height: 100rpx;
@@ -39,7 +25,7 @@
 	color:#fff;
 	font-weight:bold;
 }
-.form input{
+.introduce .form input{
 	width: 600rpx;
 	display: block;
 	margin:24rpx auto;
@@ -48,36 +34,32 @@
 	padding:20rpx 20rpx;
 	color:#333;
 }
-.form {
+.introduce .form {
 	margin:100rpx 0;
 }
 
-.form .title{
+.introduce .form .title{
 	text-align: center;
 	font-size: 32rpx;
 	color:#333;
 	line-height: 1.5;
 }
-.form .des{
+.introduce .form .des{
 	text-align: center;
 	font-size: 24rpx;
 	color:#666;
 	line-height: 1.5;
 }
-.form .info-list{
+.introduce .form .info-list{
 	width: 640rpx;
 	margin: 50rpx auto;
 }
-.form .info{
+.introduce .form .info{
 	font-size:28rpx;
 	line-height: 1.5;
 	color:#333;
 }
-map{
+.introduce map{
 	width: 750rpx;
 	height: 750rpx;
-}
-
-.page{
-	padding-bottom: 50rpx;
 }

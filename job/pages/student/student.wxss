@@ -1,0 +1,171 @@
+.page{
+	padding-bottom:100rpx;
+
+}
+.hd{
+	position: fixed;
+	height: 80rpx;
+	background:rgb(251 , 251 , 251 );
+	opacity: 0.96;
+	left:0;
+	top:0;
+	width:750rpx;
+	z-index:1000;
+}
+.hd .back , .info .back{
+	position: fixed;
+	width:65rpx;
+	height: 65rpx;
+	left:20rpx;
+	z-index:1001;
+	text-align: left;
+	line-height: 65rpx;
+	padding-left: 15rpx;
+}
+.info .back{
+	z-index:1;
+}
+
+.hd .back:before , .info .back:before{
+	font-family: 'iconfont';
+	content : '\e610';
+	color:#333;
+	font-size: 45rpx;
+}
+.info .back:before{
+	color:#fff;
+}
+
+.hd .title{
+	width:360rpx;
+	text-align: center;
+	font-size:32rpx;
+	overflow: hidden;
+	padding:6rpx 30rpx 12rpx;
+	margin:0 auto;
+	height: 32rpx;
+}
+.box{
+	margin-top:20rpx;
+	padding:40rpx;
+}
+.box-hd .title{
+	font-size:32rpx;
+	color:#333;
+	position: relative;
+	z-index:1;
+	background: #fff;
+	width: 220rpx;
+	line-height: 36rpx;
+	font-weight: bold;
+}
+.box-hd .title:before{
+	font-family: 'iconfont';
+	content : '\e62d';
+	font-size:32rpx;
+	color:#1787fb;
+	margin-right: 10rpx;
+}
+.clear{
+	float: none;
+	clear:both;
+}
+.box-hd{
+	position: relative;
+
+}
+.box-hd .line{
+	border-top:solid 1px #eee;
+	position: absolute;
+	top:18rpx;
+	left: 0 ;
+	right:0rpx;
+}
+.box-bd{
+	margin-top:32rpx;
+}
+.basic .item{
+	height: 60rpx;
+	line-height: 60rpx;
+	font-size: 28rpx;
+}
+.basic .item .label{
+	float:left;
+	width:130rpx;
+	color:#888;
+	text-align: right;
+	padding-right: 50rpx;
+}
+.basic .item .value{
+	float: left;
+	width: 460rpx;
+	overflow: hidden;
+	height: 60rpx;
+	color:#333;
+}
+.pics{
+	width:750rpx;
+	margin-left:-40rpx;
+}
+.pics image{
+	display: block;
+	margin-top:40rpx;
+	width:100%;
+}
+.ft{
+	height: 100rpx;
+	position: fixed;
+	bottom:0;
+	left:0;
+	z-index:1000;
+	width:750rpx;
+	background:rgba(251 , 251 , 251 , 0.96);
+	border-bottom:solid 1rpx rgb(238,238,238);
+}
+.ft .btn{
+	width:200rpx;
+	position: absolute;
+	height: 80rpx;
+	text-align: center;
+	line-height: 80rpx;
+	font-size:36rpx;
+	top:10rpx;
+	border-radius: 10rpx;
+	
+}
+.reject{
+	left:30rpx;
+	color:#333;
+	background: #ccc;
+}
+.ft .call{
+	right: 30rpx;
+	background:#f50;
+	color:#fff;
+	font-size: 30rpx;
+}
+.call:before{
+	content : '\e600';
+	font-family: 'iconfont';
+	margin-right: 10rpx;
+	font-size:30rpx;
+}
+.accept{
+	background:#06f;
+	color:#fff;
+	left:275rpx;
+}
+.has-accept , .has-reject{
+	width:500rpx;
+	text-align: center;
+	font-size:36rpx;
+	height: 100rpx;
+	line-height: 100rpx;
+	font-weight: bold;
+}
+.has-accept{
+	color:#06f;
+}
+.has-reject{
+	color:#666;
+}

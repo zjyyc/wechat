@@ -106,14 +106,6 @@
 	color:#06f;
 	font-weight: 500;
 }
-
-
-
-
-
-
-
-
 .box{
 	margin-top:20rpx;
 	padding:40rpx;
@@ -176,6 +168,10 @@
 	overflow: hidden;
 	height: 60rpx;
 	color:#333;
+}
+.businese .item .tel{
+	color:#06f;
+	font-weight: bold;
 }
 
 

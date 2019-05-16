@@ -1,25 +1,53 @@
 <view class='page' style='padding-top:{{statusBarHeight*2+80}}rpx'>
+	<view class='refresh-loading' style='top:{{statusBarHeight * 2}}rpx;'>下拉刷新 ...</view>
 	<view class='hd' style='padding-top:{{statusBarHeight*2}}rpx;'>
 		<view bindtap='changeType'>
 			{{belong.title}}
 		</view>
 	</view>
-	<view class='bd' wx:if='{{loginData}}'>
-		<view class='item' wx:for='{{applyList}}' wx:key='{{index}}' data-company-id='{{item.company_id}}' data-job-id='{{item.job_id}}' bindtap='go'>
-			<view class='title'>{{map[item.job_id].title}}</view>
-			<view class='date'>{{item.date}}</view>
-			<view class='salary'>{{map[item.job_id].salary || '面议'}}</view>
-			<view class='company'>{{map[item.job_id].companyName}}</view>
-			<view class='status'>面试中</view>
+	<block wx:if='{{loginData}}'>
+		<view class='bd' wx:if='{{loginData.company}}'>
+			<view class='node' wx:for='{{companyApplyList}}' wx:key='{{index}}'>
+				<view class='node-bd' bindtap='goStudent' data-job-id='{{item.jobId}}' data-tel='{{item.tel}}'>
+					<view class='title'>{{map[item.job_id].title}}</view>
+					<view class='date'>{{item.date}}</view>
+					<view class='name-class'>
+						<view class='name'>{{item.name}}</view>
+						<view class='class1'>{{item.class1}}</view>
+					</view>
+					<view class='tel' catchtap='ringUp' data-tel='{{item.tel}}'>{{item.tel}}</view>
+					<view class='icon-right'></view>
+					<view class='has-accept' wx:if='{{item.type == 1}}'>已录取</view>
+					<view class='has-reject' wx:if='{{item.type == -1}}'>已拒绝</view>
+				</view>
+			</view>
+			<view wx:if='{{companyApplyList && companyApplyList.length == 0}}'>
+				<image class='none' mode='widthFix' src='http://x.eat163.com/6948803220.jpg?x-oss-process=image/resize,w_750'></image>
+			</view>
+			<view class='logout'>
+				<button bindtap='logout'>退出登陆</button>
+			</view>
 		</view>
+		<view class='bd' wx:else>
+			<view class='item' wx:for='{{applyList}}' wx:key='{{index}}' data-company-id='{{item.company_id}}' data-job-id='{{item.job_id}}' bindtap='go'>
+				<view class='title'>{{map[item.job_id].title}}</view>
+				<view class='date'>{{item.date}}</view>
+				<view class='salary'>{{map[item.job_id].salary || '面议'}}</view>
+				<view class='company'>{{map[item.job_id].companyName}}</view>
+				<view wx:if='{{item.type == 0}}' class='status'>面试中</view>
+				<view class='has-accept' wx:if='{{item.type == 1}}'>已录取</view>
+				<view class='has-reject' wx:if='{{item.type == -1}}'>已拒绝</view>
+			</view>
 
-		<view wx:if='{{applyList && applyList.length == 0}}'>
-			<image class='none' mode='widthFix' src='http://x.eat163.com/6948803220.jpg?x-oss-process=image/resize,w_750'></image>
-		</view>
+			<view wx:if='{{applyList && applyList.length == 0}}'>
+				<image class='none' mode='widthFix' src='http://x.eat163.com/6948803220.jpg?x-oss-process=image/resize,w_750'></image>
+			</view>
 
-		<view class='logout'>
-			<button bindtap='logout'>退出登陆</button>
+			<view class='logout'>
+				<button bindtap='logout'>退出登陆</button>
+			</view>
 		</view>
-	</view>
+	</block>
+	
 	<button class='login' wx:else open-type="getPhoneNumber" bindgetphonenumber="login">微信帐号快速登陆</button>
 </view>
